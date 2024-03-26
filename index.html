@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flor</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    
+    .flower {
+        font-size: 40px;
+        line-height: 0.6;
+        cursor: pointer; /* Agregamos un cursor de puntero para indicar que la flor es clickeable */
+    }
+
+    .heart {
+        position: fixed;
+        color: red;
+        animation: floating 2s infinite;
+    }
+
+    @keyframes floating {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<div class="flower" id="flower">
+    <br>🌸<br>
+    
+
+    
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const flower = document.getElementById('flower');
+        flower.addEventListener('click', function() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(heart);
+            setTimeout(function() {
+                heart.remove();
+            }, 2000); // Quitamos el corazón después de 2 segundos
+        });
+    });
+</script>
+
+</body>
+</html>
